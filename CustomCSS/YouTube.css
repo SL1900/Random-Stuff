@@ -1,0 +1,167 @@
+/*My Youtube theme (small changes)*/
+/*Views and upload date in a column*/
+#info-text{
+	display: flex !important;
+	flex-direction: column;
+	max-height: none !important;
+}
+
+/*Remove dot between views and upload date*/
+#info-strings #dot{
+	display: none;
+}
+
+#info-contents > ytd-video-primary-info-renderer{
+	border-bottom: none;
+}
+#sentiment{
+	padding-top: 0 !important;
+
+}
+/*Outer border*/
+#primary-inner #meta,
+#info-contents{
+	border: 4px solid #5b5b5b;
+	border-radius: 15px;
+	padding: 5px;
+}
+/*Outer border end*/
+#info-contents{
+	margin-top: 15px;
+}
+
+/*Inner border*/
+#primary-inner #meta #meta-contents,
+#info-contents > ytd-video-primary-info-renderer{
+	padding: 5px;
+	border: 2px solid #404040;
+	border-radius: 10px;
+}
+/*Inner border end*/
+
+#primary-inner #meta{
+	margin-top: 5px;
+}
+
+#primary-inner #meta #meta-contents ytd-video-secondary-info-renderer{
+	border-bottom: none;
+	padding: 0;
+	margin: 0 5px;
+}
+
+/*Move video description left - OUT*/
+#primary-inner #meta #meta-contents ytd-expander{
+	margin-left: 0;
+}
+
+#metadata-line.ytd-video-meta-block:hover{
+	max-height: none;
+}
+/*Move video description left - OUT*/
+
+/**/
+ytd-watch-flexy > #columns > #primary {
+	margin-left: 15px;
+}
+#comments{
+	margin-left: 5px;
+}
+
+#emoji img{
+	--size: 36px;
+	width: var(--size);
+	height: var(--size);
+}
+
+/*Move Popups down - IN*/
+/*
+tp-yt-paper-dialog.style-scope.ytd-popup-container{
+	top: 62% !important;
+}
+*/
+/*Move Popups down - OUT*/
+
+/*Fix columns width overflow (rare(?)) - IN*/
+ytd-watch-flexy #columns {
+	display: flex !important;
+	min-width: 0 !important;
+}
+ytd-watch-flexy #columns #primary{
+	flex: 2 !important;
+	min-width: 0 !important;
+}
+ytd-watch-flexy #columns #secondary{
+	flex: 1 !important;
+	min-width: 0 !important;
+}
+/*Fix columns width overflow (rare(?)) - OUT*/
+
+/*Change "save to" dialog - IN*/
+ytd-popup-container.ytd-app{
+	display: flex;
+	justify-content: center;
+}
+ytd-popup-container.ytd-app #playlists{
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+ytd-popup-container.ytd-app #playlists ytd-playlist-add-to-option-renderer{
+	border: 2px solid gray;
+	border-radius: 5px;
+	margin: 2px !important;
+	padding: 4px;
+}
+ytd-popup-container.ytd-app #playlists ytd-playlist-add-to-option-renderer #checkboxLabel{
+	padding-left: 5px;
+}
+/*Change "save to" dialog - OUT*/
+
+/*Category and game icons - IN*/
+#meta-contents ytd-metadata-row-container-renderer #contents{
+	justify-content: space-between;
+	padding: 0 25px;
+}
+#meta-contents ytd-metadata-row-container-renderer #contents ytd-rich-metadata-renderer{
+	border: 2px solid gray;
+	border-radius: 5px;
+	padding: 10px;
+	height: 6vh;
+	display: flex;
+	margin: 8px 0;
+	flex: 0;
+}
+#meta-contents ytd-metadata-row-container-renderer ytd-rich-metadata-renderer #thumbnail.ytd-rich-metadata-renderer{
+	height: 6vh;
+	width: 4vw;
+	margin: 0 16px 0 8px;
+}
+#meta-contents ytd-metadata-row-container-renderer ytd-rich-metadata-renderer #endpoint-link {
+	display: flex;
+}
+#meta-contents ytd-metadata-row-container-renderer ytd-rich-metadata-renderer #thumbnail yt-img-shadow{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+/*Category and game icons - OUT*/
+
+/*Expand "more" button at the bottom of description - IN*/
+#meta-contents #container #more,
+#meta-contents #container #less{
+	border: 2px solid gray;
+	border-radius: 5px;
+	padding-bottom: 4px;
+	margin: 10px 35% 5px;
+	display: flex;
+}
+#meta-contents #container #more:hover,
+#meta-contents #container #less:hover{
+	background-color: #3f3f3f;
+}
+#meta-contents #container #more yt-formatted-string,
+#meta-contents #container #less yt-formatted-string{
+	font-size: 1.4rem;
+	margin-top: 4px;
+}
+/*Expand "more" button at the bottom of description - OUT*/
