@@ -122,6 +122,10 @@
             .sl-modal-search{
               display: flex;
               align-items: center;
+              width: 90%;
+            }
+            .sl-modal-search input{
+              flex: 1;
             }
             .sl-modal-tag-node{
               border: 2px solid var(--border);
@@ -173,11 +177,11 @@
               margin: 2px;
             }
             .sl-modal-add-tag-btn{
-              padding: 2px;
-              margin: 2px;
-              border: 2px solid var(--border);
+              padding: 2px 4px;
+              margin: 3px 5px 3px 0;
+              border: 2px solid var(--border-secondly);
               border-radius: 5px;
-              background: var(--bg-tag);
+              background: var(--bg);
             }
             .sl-modal-edit-change-btn{
               height: 80%;
@@ -222,10 +226,13 @@
             modal.innerHTML = `
             <div class="sl-modal-wrapper">
               <div class="sl-modal-search">
+                <!--
                 Search:
-                <input type="text" class="sl-modal-search-input">
+                <input type="text" class="sl-modal-search-input" value="No functionality for now">
+                -->
                 Tag:
-                <input type="text" class="sl-modal-tag-input">
+                <input type="text" placeholder="tag name in list|tag name on page" class="sl-modal-tag-input">
+                <div class="sl-modal-add-tag-btn">+</div>
                 <div class="sl-modal-username">${this.username}</div>
                 <div class="sl-modal-edit-btn">EDIT</div>
               </div>
@@ -267,6 +274,9 @@
             this.editChangeBtn = modal.querySelector(".sl-modal-edit-change-btn");
             this.editUsersList = modal.querySelector(".sl-modal-edit-users-list");
             this.editUsersList.onscroll = (event) => { event.stopPropagation(); }
+            this.addTagBtn = modal.querySelector(".sl-modal-add-tag-btn");
+
+            this.addTagBtn.onclick = ()=> this.ModalAddTag.apply(this);
 
             this.editChangeBtn.onclick = (event)=>{
                 this.EditTag.apply(this);
@@ -509,7 +519,6 @@
 
                 this.tagsNode.appendChild(tagNode);
             }
-            this.ModalAddAddButton.apply(this);
         }
         connectedCallback(){
             setInterval(()=>{this.Update.apply(this)},500)
