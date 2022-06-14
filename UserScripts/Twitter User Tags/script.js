@@ -1,15 +1,48 @@
 // ==UserScript==
 // @name         [Twitter] User tags
+// @namespace    http://tampermonkey.net/
 // @version      0.1
+// @description  idk
 // @author       SL1900
 // @match        *://twitter.com/*
 // @icon         https://www.google.com/s2/favicons?domain=twitter.com
 // @require      https://code.jquery.com/jquery-3.6.0.min.js
-// @grant        none
+// @grant        GM_xmlhttpRequest
 // ==/UserScript==
 
 (function() {
     'use strict';
+
+    function saveData(){
+        GM_xmlhttpRequest({
+            method: 'POST',
+            url: "https://StoreNote.dumbone.repl.co/set",
+            data: JSON.stringify({filename: "tags.json", content: localStorage.getItem("slTags")}),
+            onload: function () { },
+            headers:{"Content-type": "application/json"}
+        });
+    }
+
+    function getData(){
+        GM_xmlhttpRequest({
+            method: 'GET',
+            url: "https://StoreNote.dumbone.repl.co/get?filename=tags.json",
+            onload: function (res) {
+                localStorage.setItem("slTags",res.responseText);
+            },
+            headers:{"Content-type": "application/json"}
+        });
+    }
+
+    if(!localStorage.getItem("slTags")){
+        getData();
+    }
+
+    setInterval(()=>{
+        console.log("[Twitter tags] Syncing...");
+        if(localStorage.getItem("slTags"))
+            saveData();
+    },60000);
 
     let style = document.createElement("style");
             style.textContent = `
@@ -506,7 +539,7 @@
                         node.style.color = "red";
                         timeout_id = setTimeout(()=>{
                             node.pressed = 0;
-                            node.style.color = "white";
+                            node.style.color = "black";
                         },500);
                     }
                     if(node.pressed < 2) return;
