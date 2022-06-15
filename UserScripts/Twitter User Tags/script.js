@@ -113,7 +113,7 @@
               flex-direction: column;
             }
             .sl-modal-body{
-              flex: 1;
+              overflow: hidden;
               border-top: 2px solid var(--border-secondly);
               width: 100%;
               display: flex;
@@ -122,6 +122,8 @@
               flex-direction: column;
             }
             .sl-modal-tags{
+              overflow-y: scroll;
+              height: 100%;
               display: flex;
               justify-content: center;
               align-items: center;
@@ -156,6 +158,8 @@
               display: flex;
               align-items: center;
               width: 90%;
+              flex-wrap: wrap;
+              justify-content: center;
             }
             .sl-modal-search input{
               flex: 1;
